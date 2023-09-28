@@ -107,6 +107,10 @@
     display: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 .card-box {
     height: 9rem;
     width: 100%;
