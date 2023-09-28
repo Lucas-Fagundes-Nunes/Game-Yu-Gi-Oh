@@ -51,6 +51,13 @@ const cardData = [
     },
 ]
 
+async function drawSelectCard(index) {
+    state.cardSprites.avatar.src = cardData[index].img;
+    state.cardSprites.name.innerText = cardData[index].name;
+    state.cardSprites.type.innerText = "Atack : " + cardData[index].type;
+
+}
+
 async function createCardImage(IdCard, fieldSide) {
     const cardImage = document.createElement("img");
     cardImage.setAttribute("height", "100px");
@@ -59,14 +66,14 @@ async function createCardImage(IdCard, fieldSide) {
     cardImage.classList.add("card");
 
     if (fieldSide === playerSides.player1) {
+        cardImage.addEventListener("mouseover", () => {
+            drawSelectCard(IdCard);
+        });
+
         cardImage.addEventListener("click", () => {
             setCardsField(cardImage.getAttribute("data-id"));
         });
     } 
-
-    cardImage.addEventListener("mousemover", () => {
-        drawSelectCard(IdCard)
-    });
 
     return cardImage;
 }
